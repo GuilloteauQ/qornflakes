@@ -8,6 +8,10 @@
         path = ./templates/R;
         description = "R and friends";
       };
+      python = {
+        path = ./templates/python;
+        description = "a Python3.8 template";
+      };
     };
   };
 }
