@@ -10,7 +10,7 @@
       inherit templates;
 
       packages.x86_64-linux = (builtins.mapAttrs (templateName: templateValue:
-        pkgs.writeScriptBin "cookiecutter-${templateName}-template" ''
+        pkgs.writeScriptBin "${templateValue.description}" ''
           #!${pkgs.stdenv.shell}
           ${pkgs.cookiecutter}/bin/cookiecutter ${templateValue.path} $@
         '') cookiecutterTemplates);
