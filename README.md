@@ -27,3 +27,21 @@ To initialize the current folder:
 ```sh
 $ nix flake init -t github:GuilloteauQ/qflakes#python
 ```
+
+## Register these flakes
+
+```sh
+$ nix registry add qflakes github:GuilloteauQ/qflakes
+```
+
+Check if it is in the list:
+
+```sh
+$ nix registry list
+```
+
+We can now use it as simply as:
+
+```sh
+$ nix flake new -t qflakes#python plop
+```
