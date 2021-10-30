@@ -16,6 +16,10 @@
         path = ./templates/markdown;
         description = "a Markdown + Pandoc template";
       };
+      Rmd = {
+        path = ./templates/Rmd;
+        description = "a RMarkdown template";
+      };
     };
   };
 }
