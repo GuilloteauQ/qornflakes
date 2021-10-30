@@ -12,6 +12,10 @@
         path = ./templates/python;
         description = "a Python3.8 template";
       };
+      md = {
+        path = ./templates/markdown;
+        description = "a Markdown + Pandoc template";
+      };
     };
   };
 }
