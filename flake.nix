@@ -20,6 +20,10 @@
         path = ./templates/Rmd;
         description = "a RMarkdown template";
       };
+      C = {
+        path = ./templates/c;
+        description = "a simple C template";
+      };
     };
   };
 }
