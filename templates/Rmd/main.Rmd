@@ -1,0 +1,29 @@
+---
+title: "Rmd example"
+author: Quentin
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, dpi = 300, dev = "png", cache = TRUE)
+default_options <- options()
+
+library(tidyverse) # To clean and show data
+library(reshape2) # for melting a data frame
+library(zoo) # for the rolling average
+
+set.seed(17440)
+```
+
+
+# A dummy example
+
+```{r example}
+N <- 50
+df <- tibble(x = runif(N), y = runif(N))
+
+df %>%
+    ggplot(aes(x = x, y = y)) +
+    geom_point() +
+    theme_bw() +
+    ggtitle("Some title")
+```
