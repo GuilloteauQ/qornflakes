@@ -1,22 +1,22 @@
 {
   R = {
-    path = ./templates/R;
+    path = ./R;
     description = "R and friends";
   };
   python = {
-    path = ./templates/python;
+    path = ./python;
     description = "a Python3.8 template";
   };
   md = {
-    path = ./templates/markdown;
+    path = ./markdown;
     description = "a Markdown + Pandoc template";
   };
   Rmd = {
-    path = ./templates/Rmd;
+    path = ./Rmd;
     description = "a RMarkdown template";
   };
   C = {
-    path = ./templates/c;
+    path = ./c;
     description = "a simple C template";
   };
 }
