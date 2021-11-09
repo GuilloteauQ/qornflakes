@@ -6,11 +6,14 @@ My personnal collection of frequent Nix Flakes
 ```sh
 $ nix flake show github:GuilloteauQ/qornflakes
 
-github:GuilloteauQ/qornflakes/b5d9182f5165f08595d0bc0d6850239b710a5deb
 ├───packages
 │   └───x86_64-linux
 │       ├───cc-flake-test: package 'cookiecutter-template-flake-test'
-│       └───cc-python: package 'cookiecutter-template-python'
+│       ├───cc-python: package 'cookiecutter-template-python'
+│       ├───shell-R: package 'R'
+│       ├───shell-julia: package 'julia'
+│       ├───shell-lua: package 'lua'
+│       └───shell-python: package 'python'
 └───templates
     ├───C: template: a simple C template
     ├───R: template: R and friends
