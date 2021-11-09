@@ -28,9 +28,8 @@
       generateDerivations =
         { path, commonDer, buildInputs ? [ ], extension, outputFormats }:
         let names = getFiles { inherit path extension; };
-        in
 
-        builtins.listToAttrs (builtins.concatMap (name:
+        in builtins.listToAttrs (builtins.concatMap (name:
           let basename = builtins.elemAt (builtins.split extension name) 0;
           in (builtins.map (outputFormat: {
             name = "${basename}::${outputFormat}";

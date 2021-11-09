@@ -10,9 +10,8 @@ let
     let folders = getFolders { inherit path; };
     in builtins.listToAttrs (builtins.map (folder_name: {
       name = "shell-${folder_name}";
-      value =
-        import (./. + "/${folder_name}/shell.nix") { inherit pkgs; };
+      value = import (./. + "/${folder_name}/shell.nix") { inherit pkgs; };
     }) folders);
 
-    path = ./.;
+  path = ./.;
 in buildSet { inherit pkgs path; }
