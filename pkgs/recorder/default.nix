@@ -14,6 +14,7 @@ stdenv.mkDerivation {
     coreutils
     cmake
     hdf5
+    arrow-cpp
   ];
 
 }
