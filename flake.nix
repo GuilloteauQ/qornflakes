@@ -11,6 +11,9 @@
     in {
       inherit templates;
 
-      packages.x86_64-linux = utils.build_cc_pkgs { inherit pkgs cookiecutterTemplates; } // shellSet // {recorder = import ./pkgs/recorder/default.nix { inherit pkgs; };};
+      packages.x86_64-linux = utils.build_cc_pkgs { inherit pkgs cookiecutterTemplates; } // shellSet // {
+        recorder = import ./pkgs/recorder/default.nix { inherit pkgs; };
+        recorder-viz = import ./pkgs/recorder-viz/default.nix { inherit pkgs; };
+      };
     };
 }
