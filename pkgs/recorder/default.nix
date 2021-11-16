@@ -16,5 +16,4 @@ stdenv.mkDerivation {
     hdf5
     arrow-cpp
   ];
-
 }
