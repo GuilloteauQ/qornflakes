@@ -8,6 +8,13 @@ let
     rev = "06faec6ae09081078da1d85e3737928361ade8f1";
     sha256 = "sha256-5rGsA21GrMg7b3UGi1ShJHX/lmfXA01nY6ZTacNgZRA";
   };
+  myPerl = perl.withPackages(
+    p: with p; [
+      HTMLParser
+      PodLaTeX
+    ]
+  );
+
 in
   rec {
     pydarshan = python38Packages.buildPythonPackage rec {
@@ -40,6 +47,7 @@ in
         bzip2
         libarchive
       ];
+      nativeBuildInputs = [ makeWrapper ];
       buildPhase = ''
         mkdir -p $out/build
         cd darshan-util
@@ -48,6 +56,10 @@ in
 
         make
         make install
+      '';
+      fixupPhase = ''
+        # mv $out/bin/darshan-job-summary.pl $out/bin/_darshan-job-summary.pl
+        wrapProgram $out/bin/darshan-job-summary.pl --prefix PATH ":" ${pkgs.lib.makeBinPath [ gnuplot myPerl epstool texlive.combined.scheme-full]}
       '';
     };
   }
