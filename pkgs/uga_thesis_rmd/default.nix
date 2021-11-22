@@ -7,15 +7,13 @@ rPackages.buildRPackage rec {
   src = fetchFromGitHub {
     owner = "GuilloteauQ";
     repo = "uga_thesis_rmd";
-    rev = "e9b31710c66e13b9c689b0eb80cc32f3d6e01777";
-    sha256 = "sha256-DatgP+m9mAs1mvxoCxEinzpd5SDPeMFaqxu9JV0ysH4";
+    rev = "6d446bde5afb01294f32b30f21bfc0e271cdfb14";
+    sha256 = "sha256-HV0Ff5e6+FdE72Vl/0N3RP4f+eQTEEnWkqQpnof8fEM";
   };
   buildInputs = with rPackages; [
     R
-    tidyverse
     bookdown
     knitr
-    here
     R_utils
   ];
 }
