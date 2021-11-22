@@ -19,6 +19,8 @@
         globus-connect-personal = import ./pkgs/globus-connect-personnal/default.nix { inherit pkgs; };
         vanidl = import ./pkgs/vanidl/default.nix { inherit pkgs; };
         python-mip = import ./pkgs/python-mip/default.nix { inherit pkgs; };
+        docker-rmd = import ./docker-images/rmd/default.nix { inherit pkgs; };
+        uga_thesis_rmd = import ./pkgs/uga_thesis_rmd/default.nix { inherit pkgs; };
       } // import ./pkgs/darshan/default.nix { inherit pkgs; };
     };
 }
