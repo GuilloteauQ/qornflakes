@@ -49,11 +49,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1637886569,
-        "narHash": "sha256-ZQAPgh3P0XF6lyzJYSBHBTyoL+wDr+4WaKL08BZMj14=",
+        "lastModified": 1637888848,
+        "narHash": "sha256-DGFOmgQ9y0OJutfXVIUkkcULvAMC3Kf7WIpkCmipGVY=",
         "owner": "GuilloteauQ",
         "repo": "qornflakes",
-        "rev": "d286485f3da6968225e413a0e3998f49ec807364",
+        "rev": "b325c3bfbc2d6bae59976289d9cce5bd85521b71",
         "type": "github"
       },
       "original": {
