@@ -34,6 +34,8 @@
               import ./docker-images/rmd/default.nix { inherit pkgs; };
             uga_thesis_rmd =
               import ./pkgs/uga_thesis_rmd/default.nix { inherit pkgs; };
+            qprez =
+              import ./pkgs/qprez/default.nix { inherit pkgs; };
           } // import ./pkgs/darshan/default.nix { inherit pkgs; };
       }) // {
         inherit templates;
