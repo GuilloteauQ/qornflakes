@@ -19,4 +19,8 @@
     path = ./c;
     description = "a simple C template";
   };
+  QPrez = {
+    path = ./qprez;
+    description = "a QPrez template";
+  };
 }

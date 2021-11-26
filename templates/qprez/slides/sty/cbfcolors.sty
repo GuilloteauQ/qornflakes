@@ -1,0 +1,29 @@
+% *** COLOR BLIND FRIENDLY PALETTE ***
+% definition of colorblind friendly colors
+
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{cbfcolors}%
+[2017/06/12 v0.0.1 Palette of colorblind friendly colors]
+
+\RequirePackage{xcolor}
+
+% color definitions (cf. http://jfly.iam.u-tokyo.ac.jp/color/#pallet)
+\definecolor{cbf.orange}{cmyk}{0,0.5,1,0}
+\definecolor{cbf.skyblue}{cmyk}{0.8,0,0,0}
+\definecolor{cbf.green}{cmyk}{0.97,0,0.75,0}
+\definecolor{cbf.yellow}{cmyk}{0.1,0.05,0.9,0}
+\definecolor{cbf.blue}{cmyk}{1,0.5,0,0}
+\definecolor{cbf.vermillion}{cmyk}{0,0.8,1,0}
+\definecolor{cbf.purple}{cmyk}{0.1,0.7,0,0}
+\definecolor{cbf.gray}{cmyk}{0,0,0,0.4}
+\definecolor{cbf.black}{cmyk}{0,0,0,1}
+
+% useful aliases
+\colorlet{cbf.0}{cbf.gray}
+\colorlet{cbf.1}{cbf.orange}
+\colorlet{cbf.2}{cbf.skyblue}
+\colorlet{cbf.3}{cbf.green}
+\colorlet{cbf.4}{cbf.yellow}
+\colorlet{cbf.5}{cbf.blue}
+\colorlet{cbf.6}{cbf.vermillion}
+\colorlet{cbf.7}{cbf.purple}

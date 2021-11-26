@@ -1,0 +1,51 @@
+---
+title: 'My Awesome Presentation'
+short_title: 'my prez'
+subtitle: 'Conf of the year'
+date: 31/12/2021
+affiliations:
+    - name: UGA
+      mark: '*'
+      signature: 'Univ. Grenoble Alpes, INRIA, Grenoble-INP, CNRS'
+      authors:
+        - firstname: Quentin
+          lastname: Guilloteau
+          is_presenter: true
+        - firstname: Alice
+          lastname: A.
+    - name: INRIA
+      mark: '**'
+      signature: 'INRIA, Grenoble-INP, CNRS'
+      authors:
+        - firstname: Bob
+          lastname: B.
+header-includes:
+    - \usepackage{tikz}
+output:
+  qprez::qprez:
+    slide_level: 2
+bibliography: bib/biblio.bib
+---
+
+```{r include_packages, include=FALSE}
+options(width = 70)
+```
+
+# Introduction
+
+## first slide
+
+hello
+
+## second slide
+
+foo
+
+# next section
+
+## {.unnumbered}
+\transitionframe
+
+## some more slide
+
+bar
