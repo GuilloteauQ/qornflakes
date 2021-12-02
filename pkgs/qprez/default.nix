@@ -7,8 +7,8 @@ rPackages.buildRPackage rec {
   src = fetchFromGitHub {
     owner = "GuilloteauQ";
     repo = "QPrez";
-    rev = "ff40ff718f0f2e89a337824f5fa448ef971f47a5";
-    sha256 = "sha256-rqp6yqAE14k8nvFOvjGxjHQjPMG96BX7XsIxfUSuXDg";
+    rev = "74867727eafa1aeaa421faced8d94c56aebcd224";
+    sha256 = "sha256-eBurwH3JjuFz8JjXlRQNMR+T9K1PywY38NRsb1Nu6Gw";
   };
   buildInputs = with rPackages; [
     R
