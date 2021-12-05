@@ -10,12 +10,10 @@ python38Packages.buildPythonPackage rec {
     sha256 = "sha256-8v2yna3R9OMSmNI4z0tUUkHP5u0MHq8qZPNf2cufyKQ";
   };
   propagatedBuildInputs = with python38Packages; [
-    # globus-sdk
     click
     jmespath
     requests
-    # cryptography
-    # requests
-  ] ++ [ qorn_globus_sdk ];
+    qorn_globus_sdk
+  ];
   doCheck = false;
 }

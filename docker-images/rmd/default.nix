@@ -15,26 +15,20 @@ let
     name = "rstuff";
     inherit tag;
     fromImage = flakeImage;
-    contents = [
-        R
-        rPackages.tidyverse
-        rPackages.zoo
-        rPackages.reshape2
-    ];
+    contents = [ R rPackages.tidyverse rPackages.zoo rPackages.reshape2 ];
   };
-in
-dockerTools.buildImage {
+in dockerTools.buildImage {
   name = "guilloteauq/nix-rmd";
   inherit tag;
   fromImage = rImage;
   contents = [
-      pandoc
-      rPackages.rmarkdown
-      rPackages.markdown
-      rPackages.knitr
-      rPackages.magick
-      rPackages.codetools
-      texlive.combined.scheme-full
-      bashInteractive
+    pandoc
+    rPackages.rmarkdown
+    rPackages.markdown
+    rPackages.knitr
+    rPackages.magick
+    rPackages.codetools
+    texlive.combined.scheme-full
+    bashInteractive
   ];
 }

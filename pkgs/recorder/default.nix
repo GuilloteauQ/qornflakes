@@ -9,11 +9,5 @@ stdenv.mkDerivation {
     sha256 = "sha256-JTJyD9cqPqqfudgaqLquLeg59IQLNwdCBkR8UmYGbN0=";
   };
 
-  buildInputs = [
-    openmpi
-    coreutils
-    cmake
-    hdf5
-    arrow-cpp
-  ];
+  buildInputs = [ openmpi coreutils cmake hdf5 arrow-cpp ];
 }

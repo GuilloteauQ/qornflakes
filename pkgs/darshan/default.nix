@@ -8,59 +8,60 @@ let
     rev = "06faec6ae09081078da1d85e3737928361ade8f1";
     sha256 = "sha256-5rGsA21GrMg7b3UGi1ShJHX/lmfXA01nY6ZTacNgZRA";
   };
-  myPerl = perl.withPackages(
-    p: with p; [
-      HTMLParser
-      PodLaTeX
-    ]
-  );
+  myPerl = perl.withPackages (p: with p; [ HTMLParser PodLaTeX ]);
 
-in
-  rec {
-    pydarshan = python38Packages.buildPythonPackage rec {
-      name = "pydarshan";
-      version = "0.1";
-      src = "${rootSrc}/darshan-util/pydarshan";
-      propagatedBuildInputs = with python38Packages; [
-        cffi
-        numpy
-        pandas
-        matplotlib
-        pytest
-        pytest-runner
-        darshan-util
-      ];
-      doCheck = false;
-    };
-    darshan-util = stdenv.mkDerivation {
-      name = "darshan-util";
-      version = "3.3";
-      src = "${rootSrc}";
-      buildInputs = [
-        coreutils
-        automake
-        autobuild
-        autoconf
-        libtool
-        zlib
-        python38
-        bzip2
-        libarchive
-      ];
-      nativeBuildInputs = [ makeWrapper ];
-      buildPhase = ''
-        mkdir -p $out/build
-        cd darshan-util
-        autoreconf -fi
-        ./configure --prefix=$out --with-zlib=${pkgs.zlib.dev} --without-bzlib
+in rec {
+  pydarshan = python38Packages.buildPythonPackage rec {
+    name = "pydarshan";
+    version = "0.1";
+    src = "${rootSrc}/darshan-util/pydarshan";
+    propagatedBuildInputs = with python38Packages; [
+      cffi
+      numpy
+      pandas
+      matplotlib
+      pytest
+      pytest-runner
+      darshan-util
+    ];
+    doCheck = false;
+  };
+  darshan-util = stdenv.mkDerivation {
+    name = "darshan-util";
+    version = "3.3";
+    src = "${rootSrc}";
+    buildInputs = [
+      coreutils
+      automake
+      autobuild
+      autoconf
+      libtool
+      zlib
+      python38
+      bzip2
+      libarchive
+    ];
+    nativeBuildInputs = [ makeWrapper ];
+    buildPhase = ''
+      mkdir -p $out/build
+      cd darshan-util
+      autoreconf -fi
+      ./configure --prefix=$out --with-zlib=${pkgs.zlib.dev} --without-bzlib
 
-        make
-        make install
-      '';
-      fixupPhase = ''
-        # mv $out/bin/darshan-job-summary.pl $out/bin/_darshan-job-summary.pl
-        wrapProgram $out/bin/darshan-job-summary.pl --prefix PATH ":" ${pkgs.lib.makeBinPath [ gnuplot myPerl epstool texlive.combined.scheme-full]}
-      '';
-    };
-  }
+      make
+      make install
+    '';
+    fixupPhase = ''
+      # mv $out/bin/darshan-job-summary.pl $out/bin/_darshan-job-summary.pl
+      wrapProgram $out/bin/darshan-job-summary.pl --prefix PATH ":" ${
+        pkgs.lib.makeBinPath [
+          gnuplot
+          myPerl
+          epstool
+          texlive.combined.scheme-full
+        ]
+      }
+    '';
+  };
+}
 

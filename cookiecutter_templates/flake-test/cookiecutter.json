@@ -1,6 +1,0 @@
-{
-    "directory_name": "my-nix-flake",
-    "file_name": "flake",
-    "derivation_name": "testDer",
-    "flake_name": "test"
-}
