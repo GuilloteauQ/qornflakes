@@ -35,7 +35,7 @@
         } // import ./pkgs/darshan/default.nix { inherit pkgs; } // shellSet;
         checks = {
           pre-commit-check = pre-commit-hooks.lib.${system}.run {
-            src = ./pkgs;
+            src = ./.;
             hooks = {
               nixfmt = { enable = true; };
               nix-linter = { enable = true; };

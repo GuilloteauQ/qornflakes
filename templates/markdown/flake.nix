@@ -1,7 +1,7 @@
 {
   description = "Markdown template";
 
-  outputs = { self, nixpkgs }:
+  outputs = { nixpkgs }:
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; };
 
@@ -27,11 +27,11 @@
           && hasExtension (builtins.baseNameOf name) extension)
         (builtins.attrNames dir);
 
-      commonDer = { basename, extension, buildInputs ? [ ] }:
+      commonDer = { basename, buildInputs ? [ ] }:
         with pkgs;
         stdenv.mkDerivation {
           name = basename;
-          buildInputs = buildInputs;
+          inherit buildInputs;
           src = ./.;
           installPhase = ''
             pandoc ${basename}.md -o ${basename}.pdf
@@ -44,7 +44,6 @@
       packages.x86_64-linux = generateDerivations {
         path = ./.;
         inherit commonDer buildInputs;
-        extension = ".md";
       };
     };
 }

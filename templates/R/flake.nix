@@ -1,7 +1,7 @@
 {
   description = "R with tidyverse and friends";
 
-  outputs = { self, nixpkgs }:
+  outputs = { nixpkgs }:
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; };
 
@@ -21,6 +21,7 @@
       ];
     in {
 
-      devShell.x86_64-linux = pkgs.mkShell { buildInputs = rBaseInputs; };
+      devShell.x86_64-linux =
+        pkgs.mkShell { buildInputs = rBaseInputs ++ rmdInputs; };
     };
 }
