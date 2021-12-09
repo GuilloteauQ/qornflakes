@@ -33,6 +33,7 @@
             import ./pkgs/uga_thesis_rmd/default.nix { inherit pkgs; };
           qprez = import ./pkgs/qprez/default.nix { inherit pkgs; };
           facetscales = import ./pkgs/facetscales/default.nix { inherit pkgs; };
+          httpimport = import ./pkgs/httpimport/default.nix { inherit pkgs; };
         } // import ./pkgs/darshan/default.nix { inherit pkgs; } // shellSet;
         checks = {
           pre-commit-check = pre-commit-hooks.lib.${system}.run {
