@@ -52,7 +52,6 @@ in rec {
       make install
     '';
     fixupPhase = ''
-      # mv $out/bin/darshan-job-summary.pl $out/bin/_darshan-job-summary.pl
       wrapProgram $out/bin/darshan-job-summary.pl --prefix PATH ":" ${
         pkgs.lib.makeBinPath [
           gnuplot
@@ -61,6 +60,28 @@ in rec {
           texlive.combined.scheme-full
         ]
       }
+    '';
+  };
+  darshan-runtime = stdenv.mkDerivation {
+    name = "darshan-runtime";
+    version = "3.3";
+    src = "${rootSrc}";
+    buildInputs = [ coreutils automake autobuild autoconf libtool zlib mpich ];
+    nativeBuildInputs = [ makeWrapper ];
+    buildPhase = ''
+      mkdir -p $out/build
+      cd darshan-runtime
+      autoreconf -fi
+      ./configure --prefix=$out --with-log-path=/tmp/darshan-logs --with-jobid-env=PBS_JOBID CC=mpicc --enable-group-readable-logs
+
+      make
+      make install
+    '';
+    fixupPhase = ''
+      for f in $(ls $out/bin/*.pl); do
+          sed -i 's#/usr/bin/perl#${myPerl}/bin/perl#g' $f
+          wrapProgram $f --prefix PATH ":" ${pkgs.lib.makeBinPath [ myPerl ]}
+        done
     '';
   };
 }
