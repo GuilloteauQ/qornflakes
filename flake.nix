@@ -34,6 +34,8 @@
           qprez = import ./pkgs/qprez/default.nix { inherit pkgs; };
           facetscales = import ./pkgs/facetscales/default.nix { inherit pkgs; };
           httpimport = import ./pkgs/httpimport/default.nix { inherit pkgs; };
+          geomtextpath =
+            import ./pkgs/geomtextpath/default.nix { inherit pkgs; };
         } // import ./pkgs/MADbench2/default.nix {
           inherit pkgs;
           darshan-runtime = self.packages.${system}.darshan-runtime;
