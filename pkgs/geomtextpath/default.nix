@@ -61,13 +61,12 @@ in rPackages.buildRPackage rec {
     rev = "9fc735669da99677ab5561eead86da3d21d11e44";
     sha256 = "sha256-DqLZlmL/ZYtDuHQ+8zS72YMoeFazAeftiauPiqc3Kvw";
   };
-  buildInputs = with rPackages; [
-    R
-    R_utils
+  propagatedBuildInputs = with rPackages; [
     ggplot2
-    scales
-    systemfonts
     sf
+    systemfonts
+    scales
     myTextshaping
   ];
+  buildInputs = with rPackages; [ R R_utils ];
 }
