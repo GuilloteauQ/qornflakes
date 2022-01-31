@@ -8,9 +8,9 @@ rPackages.buildRPackage rec {
     owner = "GuilloteauQ";
     repo = "QPrez";
     # rev = "35a7010c8d5bf06234d6ce8d57dcaa2c6b3f0ffa";
-    rev = "3d012388e269170e1f48f0287e9dcfdfa1bdaf50";
+    rev = "7a20949b313c525f309564c92f8df2fa00846bdf";
     # sha256 = "sha256-CQtAogmEoniinSqByA1k0N3pyIhOvC6OjPrzw+4dZAo";
-    sha256 = "sha256-xfy1eAAyhQJnywNwaKl+SCj/CW6hQnrECGAvl6xU1C0";
+    sha256 = "sha256-BjU2uG6x6UAlt6dz+MMrMzh4sjFBZY1Yk5bXUossbjU";
   };
   buildInputs = with rPackages; [ R rmarkdown knitr R_utils ];
 }
