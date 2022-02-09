@@ -8,9 +8,9 @@ rustPlatform.buildRustPackage rec {
     owner = "PaulJuliusMartinez";
     repo = pname;
     rev = version;
-    sha256 = "1y2irlnha0dj63zp3dfbmrhssjj9qdxcl7h5sfr5nxf6dd4vjccg";
+    sha256 = "sha256-gBqyo/N/qF6HCTUrSKNVLiL1fc/JTfip1kNpNCBzRT8";
   };
 
-  cargoSha256 = "0drf5xnqin26zdyvx9n2zzgahcnrna0y56cphk2pb97qhpakvhbj";
+  cargoSha256 = "sha256-eG9lxUhcIC/VrS0afHDxyJf3ffRGEK97pQGzawzASBk";
   verifyCargoDeps = true;
 }
