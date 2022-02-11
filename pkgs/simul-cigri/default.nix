@@ -1,7 +1,7 @@
 { pkgs }:
 with pkgs;
 rustPlatform.buildRustPackage rec {
-  pname = "cigrisimul";
+  pname = "cigri-simul";
   version = "0.0.1";
 
   src = fetchgit {
@@ -10,6 +10,6 @@ rustPlatform.buildRustPackage rec {
     sha256 = "sha256-V6h11OKaQKLtq1dBLL7APMRTepTPRKdHOK0zEM32arI=";
   };
 
-  cargoSha256 = "sha256-pAj9I9By0yuhT4Wr0MOSz/VJinrC1TxXXQZMaWZeNH4=";
+  cargoSha256 = "sha256-jh47TNyopP7Ay1wPxsRV4PI2zaWkMM9jJosLDAMN4oU=";
   verifyCargoDeps = true;
 }
