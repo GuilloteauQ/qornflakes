@@ -6,8 +6,8 @@ rustPlatform.buildRustPackage rec {
 
   src = fetchgit {
     url = "https://gitlab.inria.fr/cigri-ctrl/cigrisimul";
-    rev = "6b921f00fe44c518895ac971a9960c7bf9784ef6";
-    sha256 = "sha256-LQq18d+kQvGu4Jaiiu1xJXYDvgJXa2yNBA8k3MK8Ngs=";
+    rev = "f064cf7060c1b9f9fc5a3165b444d6125eb85a4b";
+    sha256 = "sha256-V6h11OKaQKLtq1dBLL7APMRTepTPRKdHOK0zEM32arI=";
   };
 
   cargoSha256 = "sha256-pAj9I9By0yuhT4Wr0MOSz/VJinrC1TxXXQZMaWZeNH4=";
