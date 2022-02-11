@@ -41,7 +41,7 @@
         } // import ./pkgs/MADbench2/default.nix {
           inherit pkgs;
           darshan-runtime = self.packages.${system}.darshan-runtime;
-        } // import ./pkgs/darshan/default.nix { inherit pkgs; } // shellSet;
+        } // import ./pkgs/darshan/default.nix { inherit pkgs; };
         checks = {
           pre-commit-check = pre-commit-hooks.lib.${system}.run {
             src = ./.;
@@ -51,9 +51,11 @@
             };
           };
         };
-        devShell = nixpkgs.legacyPackages.${system}.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-        };
+        devShells = {
+          check = nixpkgs.legacyPackages.${system}.mkShell {
+            inherit (self.checks.${system}.pre-commit-check) shellHook;
+          };
+        } // shellSet;
       }) // {
         inherit templates;
       };
