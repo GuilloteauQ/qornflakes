@@ -22,6 +22,6 @@ in rec {
   };
 
   sigri-sum = writeScriptBin "sigri-sum" ''
-    ${myR}/bin/Rscript ${src}/R/plot.r $1
+    ${myR}/bin/Rscript ${src}/R/plot.R $1
   '';
 }
