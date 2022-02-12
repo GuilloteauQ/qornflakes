@@ -7,7 +7,7 @@ let
     sha256 = "sha256-xp0JioezlGLI3Pw8XIDDwWfdgagBtcuXwMxKX3OPg2Q=";
   };
 
-  rPkgs = with rPackages; [ tidyverse reshape2 ];
+  rPkgs = with rPackages; [ tidyverse reshape2 gridExtra ];
 
   myR = pkgs.rWrapper.override { packages = rPkgs; };
 
