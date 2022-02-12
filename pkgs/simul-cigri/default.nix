@@ -1,15 +1,27 @@
 { pkgs }:
 with pkgs;
-rustPlatform.buildRustPackage rec {
-  pname = "cigri-simul";
-  version = "0.0.1";
-
+let
   src = fetchgit {
     url = "https://gitlab.inria.fr/cigri-ctrl/cigrisimul";
-    rev = "f064cf7060c1b9f9fc5a3165b444d6125eb85a4b";
-    sha256 = "sha256-V6h11OKaQKLtq1dBLL7APMRTepTPRKdHOK0zEM32arI=";
+    rev = "34e00bc763907d9113b708bfe33f409e4996c60e";
+    sha256 = "sha256-xp0JioezlGLI3Pw8XIDDwWfdgagBtcuXwMxKX3OPg2Q=";
   };
 
-  cargoSha256 = "sha256-jh47TNyopP7Ay1wPxsRV4PI2zaWkMM9jJosLDAMN4oU=";
-  verifyCargoDeps = true;
+  rPkgs = with rPackages; [ tidyverse reshape2 ];
+
+  myR = pkgs.rWrapper.override { packages = rPkgs; };
+
+in rec {
+  sigri = rustPlatform.buildRustPackage rec {
+    pname = "cigri-simul";
+    version = "0.0.1";
+    inherit src;
+
+    cargoSha256 = "sha256-jh47TNyopP7Ay1wPxsRV4PI2zaWkMM9jJosLDAMN4oU=";
+    verifyCargoDeps = true;
+  };
+
+  sigri-sum = writeScriptBin "sigri-sum" ''
+    ${myR}/bin/Rscript ${src}/R/plot.r $1
+  '';
 }
