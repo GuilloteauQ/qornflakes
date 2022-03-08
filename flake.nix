@@ -28,6 +28,7 @@
             };
           vanidl = import ./pkgs/vanidl/default.nix { inherit pkgs; };
           python-mip = import ./pkgs/python-mip/default.nix { inherit pkgs; };
+          execo = import ./pkgs/execo/default.nix { inherit pkgs; };
           docker-rmd = import ./docker-images/rmd/default.nix { inherit pkgs; };
           uga_thesis_rmd =
             import ./pkgs/uga_thesis_rmd/default.nix { inherit pkgs; };

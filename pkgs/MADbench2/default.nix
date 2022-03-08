@@ -17,9 +17,7 @@ with pkgs; {
     installPhase = ''
       mkdir -p $out/bin
       ${darshan-runtime}/bin/darshan-gen-cc.pl ${mpich}/bin/mpicc --output mpicc.darshan
-      ${pkgs.bash}/bin/bash mpicc.darshan -D SYSTEM -D COLUMBIA -D IO -o MADbench2.x MADbench2.c -lm
-
-      # ${pkgs.mpich}/bin/mpicc -Wl,-yMPI_Init -D SYSTEM -D COLUMBIA -D IO -o MADbench2.x MADbench2.c -lm
+      ${pkgs.bash}/bin/bash mpicc.darshan -D SYSTEM -D COLUMBIA -D IO -o MADbench2.x MADbench2.c -lm -pthread -lrt -ldl
       mv MADbench2.x $out/bin
     '';
   };
