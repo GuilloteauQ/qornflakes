@@ -4,9 +4,11 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nbpreview-src.url = "github:GuilloteauQ/nbpreview";
   };
 
-  outputs = { self, nixpkgs, flake-utils, pre-commit-hooks }:
+  outputs = { self, nixpkgs, flake-utils, pre-commit-hooks, nbpreview-src }:
     let templates = import ./templates/nix_flake_templates.nix;
     in flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
@@ -14,6 +16,7 @@
         shellSet = import ./shells/default.nix { inherit pkgs; };
       in rec {
         packages = {
+          inherit (nbpreview-src.packages.${system}) nbpreview;
           recorder = import ./pkgs/recorder/default.nix { inherit pkgs; };
           recorder-viz =
             import ./pkgs/recorder-viz/default.nix { inherit pkgs; };
