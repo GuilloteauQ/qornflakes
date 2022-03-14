@@ -37,6 +37,7 @@
             import ./pkgs/uga_thesis_rmd/default.nix { inherit pkgs; };
           qprez = import ./pkgs/qprez/default.nix { inherit pkgs; };
           facetscales = import ./pkgs/facetscales/default.nix { inherit pkgs; };
+          ggpattern = import ./pkgs/ggpattern/default.nix { inherit pkgs; };
           httpimport = import ./pkgs/httpimport/default.nix { inherit pkgs; };
           jless = import ./pkgs/jless/default.nix { inherit pkgs; };
           geomtextpath =
