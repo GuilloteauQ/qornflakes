@@ -32,6 +32,7 @@
           vanidl = import ./pkgs/vanidl/default.nix { inherit pkgs; };
           python-mip = import ./pkgs/python-mip/default.nix { inherit pkgs; };
           execo = import ./pkgs/execo/default.nix { inherit pkgs; };
+          enoslib = import ./pkgs/enoslib/default.nix { inherit pkgs; };
           docker-rmd = import ./docker-images/rmd/default.nix { inherit pkgs; };
           uga_thesis_rmd =
             import ./pkgs/uga_thesis_rmd/default.nix { inherit pkgs; };
@@ -40,6 +41,8 @@
           ggpattern = import ./pkgs/ggpattern/default.nix { inherit pkgs; };
           httpimport = import ./pkgs/httpimport/default.nix { inherit pkgs; };
           jless = import ./pkgs/jless/default.nix { inherit pkgs; };
+          hackernewsTUI = import ./pkgs/hackernews-TUI/default.nix { inherit pkgs; };
+          pyhst2 = import ./pkgs/pyhst/default.nix { inherit pkgs; };
           geomtextpath =
             import ./pkgs/geomtextpath/default.nix { inherit pkgs; };
         } // import ./pkgs/MADbench2/default.nix {
