@@ -66,5 +66,6 @@
         } // shellSet;
       }) // {
         inherit templates;
+        overlay = final: prev: self.packages;
       };
 }
