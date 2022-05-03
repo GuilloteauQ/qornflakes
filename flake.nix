@@ -15,41 +15,7 @@
         pkgs = import nixpkgs { inherit system; };
         shellSet = import ./shells/default.nix { inherit pkgs; };
       in rec {
-        packages = {
-          inherit (nbpreview-src.packages.${system}) nbpreview;
-          recorder = import ./pkgs/recorder/default.nix { inherit pkgs; };
-          recorder-viz =
-            import ./pkgs/recorder-viz/default.nix { inherit pkgs; };
-          globus-cli = import ./pkgs/globus-cli/default.nix {
-            inherit pkgs;
-            qorn_globus_sdk = self.packages.${system}.globus-sdk;
-          };
-          globus-sdk = import ./pkgs/globus-sdk/default.nix { inherit pkgs; };
-          globus-connect-personal =
-            import ./pkgs/globus-connect-personnal/default.nix {
-              inherit pkgs;
-            };
-          vanidl = import ./pkgs/vanidl/default.nix { inherit pkgs; };
-          python-mip = import ./pkgs/python-mip/default.nix { inherit pkgs; };
-          execo = import ./pkgs/execo/default.nix { inherit pkgs; };
-          enoslib = import ./pkgs/enoslib/default.nix { inherit pkgs; };
-          docker-rmd = import ./docker-images/rmd/default.nix { inherit pkgs; };
-          uga_thesis_rmd =
-            import ./pkgs/uga_thesis_rmd/default.nix { inherit pkgs; };
-          qprez = import ./pkgs/qprez/default.nix { inherit pkgs; };
-          facetscales = import ./pkgs/facetscales/default.nix { inherit pkgs; };
-          ggpattern = import ./pkgs/ggpattern/default.nix { inherit pkgs; };
-          httpimport = import ./pkgs/httpimport/default.nix { inherit pkgs; };
-          jless = import ./pkgs/jless/default.nix { inherit pkgs; };
-          hackernewsTUI = import ./pkgs/hackernews-TUI/default.nix { inherit pkgs; };
-          pyhst2 = import ./pkgs/pyhst/default.nix { inherit pkgs; };
-          geomtextpath =
-            import ./pkgs/geomtextpath/default.nix { inherit pkgs; };
-        } // import ./pkgs/MADbench2/default.nix {
-          inherit pkgs;
-          darshan-runtime = self.packages.${system}.darshan-runtime;
-        } // import ./pkgs/darshan/default.nix { inherit pkgs; }
-          // import ./pkgs/simul-cigri/default.nix { inherit pkgs; };
+        packages = import ./pkgs/packages.nix { inherit pkgs; };
         checks = {
           pre-commit-check = pre-commit-hooks.lib.${system}.run {
             src = ./.;
@@ -66,6 +32,6 @@
         } // shellSet;
       }) // {
         inherit templates;
-        overlay = final: prev: self.packages;
+        overlay = final: prev: import ./pkgs/packages.nix { pkgs = prev; };
       };
 }
