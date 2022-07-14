@@ -6,6 +6,7 @@ let
 in
 darshan // rec {
   
+  ondes3d = import ./ondes3d/default.nix { inherit pkgs; };
   recorder = import ./recorder/default.nix { inherit pkgs; };
   recorder-viz =
     import ./recorder-viz/default.nix { inherit pkgs; };
