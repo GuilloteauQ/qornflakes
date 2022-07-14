@@ -11,6 +11,10 @@ pkgs.stdenv.mkDerivation {
     openmpi gnumake
   ];
 
+  postConfigure = ''
+    cp ESSAI-XML/options.h SRC/options.h
+  '';
+
   buildPhase = ''
     mkdir -p $out/bin
     cd SRC
