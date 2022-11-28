@@ -6,6 +6,8 @@ let
 in
 darshan // rec {
   
+  python-control = import ./python-control/default.nix { inherit pkgs; };
+  python-sharelatex = import ./python-sharelatex/default.nix { inherit pkgs; };
   ondes3d = import ./ondes3d/default.nix { inherit pkgs; };
   recorder = import ./recorder/default.nix { inherit pkgs; };
   recorder-viz =
