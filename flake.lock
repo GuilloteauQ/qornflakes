@@ -45,6 +45,22 @@
         "type": "github"
       }
     },
+    "marksman_nixpkgs": {
+      "locked": {
+        "lastModified": 1670221901,
+        "narHash": "sha256-Ag5wbSswMTyGXXbWlh2zm2Q5GrsoUANmzbZkCH6ojAw=",
+        "owner": "stasjok",
+        "repo": "nixpkgs",
+        "rev": "36b09745a39f1d6fb876190c35e8795027bdff52",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stasjok",
+        "ref": "marksman",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nbpreview-src": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -97,16 +113,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1646506091,
-        "narHash": "sha256-sWNAJE2m+HOh1jtXlHcnhxsj6/sXrHgbqVNcVRlveK4=",
+        "lastModified": 1669833724,
+        "narHash": "sha256-/HEZNyGbnQecrgJnfE8d0WC5c1xuPSD2LUpB6YXlg4c=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3e644bd62489b516292c816f70bf0052c693b3c7",
+        "rev": "4d2b37a84fad1091b9de401eb450aae66f1a741e",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixpkgs-unstable",
+        "ref": "22.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -166,6 +182,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "marksman_nixpkgs": "marksman_nixpkgs",
         "nbpreview-src": "nbpreview-src",
         "nixpkgs": "nixpkgs_3",
         "pre-commit-hooks": "pre-commit-hooks"

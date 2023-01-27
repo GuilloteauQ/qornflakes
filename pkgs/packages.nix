@@ -1,11 +1,15 @@
 { pkgs }:
 
-let 
+let
   darshan = import ./darshan/default.nix { inherit pkgs; };
 
 in
 darshan // rec {
-  
+
+  snakefmt = import ./snakefmt/default.nix { inherit pkgs; };
+  sysidentpy = import ./sysidentpy/default.nix { inherit pkgs; };
+  # sippy = import ./sippy/default.nix { inherit pkgs; control = python-control;};
+  marksman = import ./marksman/default.nix { inherit pkgs; };
   python-control = import ./python-control/default.nix { inherit pkgs; };
   python-sharelatex = import ./python-sharelatex/default.nix { inherit pkgs; };
   ondes3d = import ./ondes3d/default.nix { inherit pkgs; };
@@ -38,6 +42,6 @@ darshan // rec {
     import ./geomtextpath/default.nix { inherit pkgs; };
 } // import ./MADbench2/default.nix {
   inherit pkgs; darshan-runtime = darshan.darshan-runtime;
-} 
+}
   // import ./simul-cigri/default.nix { inherit pkgs; }
 
