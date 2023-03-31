@@ -5,13 +5,16 @@ let
 
 in
 darshan // rec {
+  starpu = import ./starpu/default.nix {inherit pkgs;};
+  # typst = import ./typst/default.nix { inherit pkgs; };
+  # the-littlest-jupyterhub = import ./the-littlest-jupyterhub/default.nix { inherit pkgs; };
 
   snakefmt = import ./snakefmt/default.nix { inherit pkgs; };
-  sysidentpy = import ./sysidentpy/default.nix { inherit pkgs; };
+  # sysidentpy = import ./sysidentpy/default.nix { inherit pkgs; };
   # sippy = import ./sippy/default.nix { inherit pkgs; control = python-control;};
-  marksman = import ./marksman/default.nix { inherit pkgs; };
+  # marksman = import ./marksman/default.nix { inherit pkgs; };
   python-control = import ./python-control/default.nix { inherit pkgs; };
-  python-sharelatex = import ./python-sharelatex/default.nix { inherit pkgs; };
+  # python-sharelatex = import ./python-sharelatex/default.nix { inherit pkgs; };
   ondes3d = import ./ondes3d/default.nix { inherit pkgs; };
   recorder = import ./recorder/default.nix { inherit pkgs; };
   recorder-viz =
