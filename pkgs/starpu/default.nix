@@ -13,9 +13,11 @@ pkgs.stdenv.mkDerivation rec {
     libtool
     autoconf
     automake
-    hwloc
     pkg-config
+  ];
+  propagatedBuildInputs = with pkgs; [
     fftw
+    hwloc
   ];
   patchPhase = ''
      substituteInPlace doc/extractHeadline.sh --replace "/bin/bash" "${pkgs.bashInteractive}/bin/bash"
