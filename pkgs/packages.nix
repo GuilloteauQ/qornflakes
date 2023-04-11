@@ -20,7 +20,7 @@ darshan // rec {
     pkgs.callPackage ./globus-connect-personnal { };
   vanidl = pkgs.callPackage ./vanidl { };
   uga_thesis_rmd =
-    import ./uga_thesis_rmd/default.nix { inherit pkgs; };
+    pkgs.callPackage ./uga_thesis_rmd { };
   qprez = import ./qprez/default.nix { inherit pkgs; };
   facetscales = import ./facetscales/default.nix { inherit pkgs; };
   ggpattern = import ./ggpattern/default.nix { inherit pkgs; };
