@@ -1,38 +1,43 @@
 { pkgs }:
 
-let
-  darshan = import ./darshan/default.nix { inherit pkgs; };
+rec {
+  darshan-perl = pkgs.callPackage ./darshan-perl { };
+  darshan-runtime = pkgs.callPackage ./darshan-runtime { inherit darshan-perl; };
+  darshan-util = pkgs.callPackage ./darshan-util { inherit darshan-perl; };
 
-in
-darshan // rec {
-  starpu = pkgs.callPackage ./starpu { };
-  snakefmt = pkgs.callPackage ./snakefmt { };
-  python-control = pkgs.callPackage ./python-control { };
-  ondes3d = pkgs.callPackage ./ondes3d { };
-  recorder = pkgs.callPackage ./recorder { };
-  recorder-viz =
-    pkgs.callPackage ./recorder-viz { };
-  globus-cli = pkgs.callPackage ./globus-cli {
-    inherit globus-sdk;
-  };
-  globus-sdk = pkgs.callPackage ./globus-sdk { };
-  globus-connect-personal =
-    pkgs.callPackage ./globus-connect-personnal { };
-  vanidl = pkgs.callPackage ./vanidl { };
-  uga_thesis_rmd =
-    pkgs.callPackage ./uga_thesis_rmd { };
-  qprez = pkgs.callPackage ./qprez { };
   facetscales = pkgs.callPackage ./facetscales { };
-  ggpattern = pkgs.callPackage ./ggpattern { };
-  httpimport = pkgs.callPackage ./httpimport { };
-  jless = pkgs.callPackage ./jless { };
-  hackernewsTUI = pkgs.callPackage ./hackernews-TUI { };
   freetype2 = pkgs.callPackage ./freetype2 { };
-  myTextshaping = pkgs.callPackage ./mytextshaping { inherit freetype2; }; 
-  geomtextpath =
-    pkgs.callPackage ./geomtextpath { inherit myTextshaping;};
-} // import ./MADbench2/default.nix {
-  inherit pkgs; darshan-runtime = darshan.darshan-runtime;
+
+  geomtextpath = pkgs.callPackage ./geomtextpath { inherit myTextshaping; };
+  ggpattern = pkgs.callPackage ./ggpattern { };
+  globus-cli = pkgs.callPackage ./globus-cli { inherit globus-sdk; };
+  globus-connect-personal = pkgs.callPackage ./globus-connect-personnal { };
+  globus-sdk = pkgs.callPackage ./globus-sdk { };
+
+  hackernewsTUI = pkgs.callPackage ./hackernews-TUI { };
+  httpimport = pkgs.callPackage ./httpimport { };
+
+  jless = pkgs.callPackage ./jless { };
+
+  madbench2 = pkgs.callPackage ./MADbench2 { mpi = pkgs.openmpi; inherit darshan-runtime; };
+  madbench2-darshan = pkgs.callPackage ./MADbench2 { mpi = pkgs.mpich; useDarshan = true; inherit darshan-runtime; };
+  myTextshaping = pkgs.callPackage ./mytextshaping { inherit freetype2; };
+
+  ondes3d = pkgs.callPackage ./ondes3d { };
+
+  pydarshan = pkgs.callPackage ./pydarshan { inherit darshan-util; };
+  python-control = pkgs.callPackage ./python-control { };
+
+  qprez = pkgs.callPackage ./qprez { };
+
+  recorder = pkgs.callPackage ./recorder { };
+  recorder-viz = pkgs.callPackage ./recorder-viz { };
+
+  snakefmt = pkgs.callPackage ./snakefmt { };
+  starpu = pkgs.callPackage ./starpu { };
+
+  uga_thesis_rmd = pkgs.callPackage ./uga_thesis_rmd { };
+
+  vanidl = pkgs.callPackage ./vanidl { };
 }
-  // import ./simul-cigri/default.nix { inherit pkgs; }
 
