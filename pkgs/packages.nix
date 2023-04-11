@@ -19,7 +19,6 @@ darshan // rec {
   globus-connect-personal =
     pkgs.callPackage ./globus-connect-personnal { };
   vanidl = pkgs.callPackage ./vanidl { };
-  python-mip = import ./python-mip/default.nix { inherit pkgs; };
   execo = import ./execo/default.nix { inherit pkgs; };
   enoslib = import ./enoslib/default.nix { inherit pkgs; };
   uga_thesis_rmd =
