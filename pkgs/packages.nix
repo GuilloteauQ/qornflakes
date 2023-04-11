@@ -5,7 +5,7 @@ let
 
 in
 darshan // rec {
-  starpu = import ./starpu/default.nix {inherit pkgs;};
+  starpu = pkgs.callPackage ./starpu { };
   # typst = import ./typst/default.nix { inherit pkgs; };
   # the-littlest-jupyterhub = import ./the-littlest-jupyterhub/default.nix { inherit pkgs; };
 
