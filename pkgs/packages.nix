@@ -9,7 +9,7 @@ darshan // rec {
   # typst = import ./typst/default.nix { inherit pkgs; };
   # the-littlest-jupyterhub = import ./the-littlest-jupyterhub/default.nix { inherit pkgs; };
 
-  snakefmt = import ./snakefmt/default.nix { inherit pkgs; };
+  snakefmt = pkgs.callPackage ./snakefmt { };
   # sysidentpy = import ./sysidentpy/default.nix { inherit pkgs; };
   # sippy = import ./sippy/default.nix { inherit pkgs; control = python-control;};
   # marksman = import ./marksman/default.nix { inherit pkgs; };
