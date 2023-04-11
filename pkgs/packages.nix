@@ -12,9 +12,8 @@ darshan // rec {
   recorder = pkgs.callPackage ./recorder { };
   recorder-viz =
     pkgs.callPackage ./recorder-viz { };
-  globus-cli = import ./globus-cli/default.nix {
-    inherit pkgs;
-    qorn_globus_sdk = globus-sdk;
+  globus-cli = pkgs.callPackage ./globus-cli {
+    inherit globus-sdk;
   };
   globus-sdk = import ./globus-sdk/default.nix { inherit pkgs; };
   globus-connect-personal =
