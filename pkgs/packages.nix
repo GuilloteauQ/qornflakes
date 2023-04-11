@@ -22,7 +22,7 @@ darshan // rec {
   uga_thesis_rmd =
     pkgs.callPackage ./uga_thesis_rmd { };
   qprez = pkgs.callPackage ./qprez { };
-  facetscales = import ./facetscales/default.nix { inherit pkgs; };
+  facetscales = pkgs.callPackage ./facetscales { };
   ggpattern = import ./ggpattern/default.nix { inherit pkgs; };
   httpimport = import ./httpimport/default.nix { inherit pkgs; };
   jless = import ./jless/default.nix { inherit pkgs; };
