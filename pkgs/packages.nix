@@ -7,8 +7,7 @@ in
 darshan // rec {
   starpu = pkgs.callPackage ./starpu { };
   snakefmt = pkgs.callPackage ./snakefmt { };
-  python-control = import ./python-control/default.nix { inherit pkgs; };
-  # python-sharelatex = import ./python-sharelatex/default.nix { inherit pkgs; };
+  python-control = pkgs.callPackage ./python-control { };
   ondes3d = import ./ondes3d/default.nix { inherit pkgs; };
   recorder = import ./recorder/default.nix { inherit pkgs; };
   recorder-viz =
