@@ -8,7 +8,7 @@ darshan // rec {
   starpu = pkgs.callPackage ./starpu { };
   snakefmt = pkgs.callPackage ./snakefmt { };
   python-control = pkgs.callPackage ./python-control { };
-  ondes3d = import ./ondes3d/default.nix { inherit pkgs; };
+  ondes3d = pkgs.callPackage ./ondes3d { };
   recorder = import ./recorder/default.nix { inherit pkgs; };
   recorder-viz =
     import ./recorder-viz/default.nix { inherit pkgs; };

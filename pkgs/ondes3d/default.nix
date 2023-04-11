@@ -1,13 +1,13 @@
-{ pkgs }:
+{ stdenv, fetchgit, openmpi, gnumake }:
 
-pkgs.stdenv.mkDerivation {
+stdenv.mkDerivation {
   name = "ondes3d";
   version = "2017";
-  src = pkgs.fetchgit {
+  src = fetchgit {
     url = "https://bitbucket.org/fdupros/ondes3d";
     sha256 = "sha256-3qJf5+O6DP5W8bixawnuEk3h9xAHZgc/b1fG8z14JP8=";
   };
-  buildInputs = with pkgs; [
+  buildInputs = [
     openmpi gnumake
   ];
 
