@@ -1,25 +1,18 @@
-{ pkgs, darshan-runtime }:
-with pkgs; {
-  MADbench2 = stdenv.mkDerivation {
-    name = "MADbench2";
-    src = ./.;
-    buildInputs = [ openmpi ];
-    installPhase = ''
-      mkdir -p $out/bin
-      mpicc -D SYSTEM -D COLUMBIA -D IO -o MADbench2.x MADbench2.c -lm
-      mv MADbench2.x $out/bin
-    '';
-  };
-  MADbench2-darshan = stdenv.mkDerivation {
-    name = "MADbench2-darshan";
-    src = ./.;
-    buildInputs = [ mpich darshan-runtime ];
-    installPhase = ''
-      mkdir -p $out/bin
-      ${darshan-runtime}/bin/darshan-gen-cc.pl ${mpich}/bin/mpicc --output mpicc.darshan
-      ${pkgs.bash}/bin/bash mpicc.darshan -D SYSTEM -D COLUMBIA -D IO -o MADbench2.x MADbench2.c -lm -pthread -lrt -ldl
-      mv MADbench2.x $out/bin
-    '';
-  };
+{ stdenv, mpi, useDarshan ? false, darshan-runtime, lib, bash }:
+
+stdenv.mkDerivation {
+  name = "MADbench2";
+  src = ./.;
+  buildInputs = [ mpi ] ++ lib.optionals useDarshan [ darshan-runtime ];
+  buildPhase = if useDarshan then ''
+    ${darshan-runtime}/bin/darshan-gen-cc.pl ${mpi}/bin/mpicc --output mpicc.darshan
+    ${bash}/bin/bash mpicc.darshan -D SYSTEM -D COLUMBIA -D IO -o MADbench2.x MADbench2.c -lm -pthread -lrt -ldl
+  '' else ''
+     ${mpi}/bin/mpicc -D SYSTEM -D COLUMBIA -D IO -o MADbench2.x MADbench2.c -lm
+  '';
+  installPhase = ''
+    mkdir -p $out/bin
+    mv MADbench2.x $out/bin
+  '';
 }
 

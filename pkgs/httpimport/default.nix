@@ -1,6 +1,6 @@
-{ pkgs }:
-with pkgs;
-python38Packages.buildPythonPackage rec {
+{ python3Packages, fetchFromGitHub }:
+
+python3Packages.buildPythonPackage rec {
   name = "httpimport";
   version = "0.7.2";
   src = fetchFromGitHub {

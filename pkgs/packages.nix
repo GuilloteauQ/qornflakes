@@ -1,50 +1,43 @@
 { pkgs }:
 
-let
-  darshan = import ./darshan/default.nix { inherit pkgs; };
+rec {
+  darshan-perl = pkgs.callPackage ./darshan-perl { };
+  darshan-runtime = pkgs.callPackage ./darshan-runtime { inherit darshan-perl; };
+  darshan-util = pkgs.callPackage ./darshan-util { inherit darshan-perl; };
 
-in
-darshan // rec {
-  starpu = import ./starpu/default.nix {inherit pkgs;};
-  # typst = import ./typst/default.nix { inherit pkgs; };
-  # the-littlest-jupyterhub = import ./the-littlest-jupyterhub/default.nix { inherit pkgs; };
+  facetscales = pkgs.callPackage ./facetscales { };
+  freetype2 = pkgs.callPackage ./freetype2 { };
 
-  snakefmt = import ./snakefmt/default.nix { inherit pkgs; };
-  # sysidentpy = import ./sysidentpy/default.nix { inherit pkgs; };
-  # sippy = import ./sippy/default.nix { inherit pkgs; control = python-control;};
-  # marksman = import ./marksman/default.nix { inherit pkgs; };
-  python-control = import ./python-control/default.nix { inherit pkgs; };
-  # python-sharelatex = import ./python-sharelatex/default.nix { inherit pkgs; };
-  ondes3d = import ./ondes3d/default.nix { inherit pkgs; };
-  recorder = import ./recorder/default.nix { inherit pkgs; };
-  recorder-viz =
-    import ./recorder-viz/default.nix { inherit pkgs; };
-  globus-cli = import ./globus-cli/default.nix {
-    inherit pkgs;
-    qorn_globus_sdk = globus-sdk;
-  };
-  globus-sdk = import ./globus-sdk/default.nix { inherit pkgs; };
-  globus-connect-personal =
-    import ./globus-connect-personnal/default.nix {
-      inherit pkgs;
-    };
-  vanidl = import ./vanidl/default.nix { inherit pkgs; };
-  python-mip = import ./python-mip/default.nix { inherit pkgs; };
-  execo = import ./execo/default.nix { inherit pkgs; };
-  enoslib = import ./enoslib/default.nix { inherit pkgs; };
-  uga_thesis_rmd =
-    import ./uga_thesis_rmd/default.nix { inherit pkgs; };
-  qprez = import ./qprez/default.nix { inherit pkgs; };
-  facetscales = import ./facetscales/default.nix { inherit pkgs; };
-  ggpattern = import ./ggpattern/default.nix { inherit pkgs; };
-  httpimport = import ./httpimport/default.nix { inherit pkgs; };
-  jless = import ./jless/default.nix { inherit pkgs; };
-  hackernewsTUI = import ./hackernews-TUI/default.nix { inherit pkgs; };
-  pyhst2 = import ./pyhst/default.nix { inherit pkgs; };
-  geomtextpath =
-    import ./geomtextpath/default.nix { inherit pkgs; };
-} // import ./MADbench2/default.nix {
-  inherit pkgs; darshan-runtime = darshan.darshan-runtime;
+  geomtextpath = pkgs.callPackage ./geomtextpath { inherit myTextshaping; };
+  ggpattern = pkgs.callPackage ./ggpattern { };
+  globus-cli = pkgs.callPackage ./globus-cli { inherit globus-sdk; };
+  globus-connect-personal = pkgs.callPackage ./globus-connect-personnal { };
+  globus-sdk = pkgs.callPackage ./globus-sdk { };
+
+  hackernewsTUI = pkgs.callPackage ./hackernews-TUI { };
+  httpimport = pkgs.callPackage ./httpimport { };
+
+  jless = pkgs.callPackage ./jless { };
+
+  madbench2 = pkgs.callPackage ./MADbench2 { mpi = pkgs.openmpi; inherit darshan-runtime; };
+  madbench2-darshan = pkgs.callPackage ./MADbench2 { mpi = pkgs.mpich; useDarshan = true; inherit darshan-runtime; };
+  myTextshaping = pkgs.callPackage ./mytextshaping { inherit freetype2; };
+
+  ondes3d = pkgs.callPackage ./ondes3d { };
+
+  pydarshan = pkgs.callPackage ./pydarshan { inherit darshan-util; };
+  python-control = pkgs.callPackage ./python-control { };
+
+  qprez = pkgs.callPackage ./qprez { };
+
+  recorder = pkgs.callPackage ./recorder { };
+  recorder-viz = pkgs.callPackage ./recorder-viz { };
+
+  snakefmt = pkgs.callPackage ./snakefmt { };
+  starpu = pkgs.callPackage ./starpu { };
+
+  uga_thesis_rmd = pkgs.callPackage ./uga_thesis_rmd { };
+
+  vanidl = pkgs.callPackage ./vanidl { };
 }
-  // import ./simul-cigri/default.nix { inherit pkgs; }
 

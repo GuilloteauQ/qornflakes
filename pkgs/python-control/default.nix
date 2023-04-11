@@ -1,5 +1,5 @@
-{ pkgs }:
-with pkgs;
+{ python3Packages, fetchFromGitHub }:
+
 python3Packages.buildPythonPackage rec {
   pname = "python-control";
   version = "0.9.2";

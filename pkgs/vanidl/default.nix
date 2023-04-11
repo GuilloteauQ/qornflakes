@@ -1,6 +1,6 @@
-{ pkgs }:
-with pkgs;
-python38Packages.buildPythonPackage rec {
+{ python3Packages, fetchFromGitHub }:
+
+python3Packages.buildPythonPackage rec {
   name = "vanidl";
   version = "0.0.1";
   src = fetchFromGitHub {
@@ -13,7 +13,7 @@ python38Packages.buildPythonPackage rec {
     sed -i 's#==#>=#g' requirements.txt
     sed -i 's#==#>=#g' setup.cfg
   '';
-  propagatedBuildInputs = with python38Packages; [
+  propagatedBuildInputs = with python3Packages; [
     pandas
     numpy
     h5py

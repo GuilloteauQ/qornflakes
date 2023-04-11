@@ -1,5 +1,5 @@
-{ pkgs }:
-with pkgs;
+{ rustPlatform, fetchFromGitHub }:
+
 rustPlatform.buildRustPackage rec {
   pname = "hackernews-TUI";
   version = "v0.7.1";

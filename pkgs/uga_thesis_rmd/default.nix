@@ -1,5 +1,4 @@
-{ pkgs }:
-with pkgs;
+{ rPackages, fetchFromGitHub }:
 
 rPackages.buildRPackage rec {
   name = "uga_thesis_rmd";

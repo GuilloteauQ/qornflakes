@@ -1,15 +1,20 @@
 {
   description = "R with tidyverse and friends";
 
-  outputs = { nixpkgs }:
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/22.11";
+  };
+
+
+  outputs = { self, nixpkgs }:
     let
-      pkgs = import nixpkgs { system = "x86_64-linux"; };
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
 
       rBaseInputs = with pkgs; [
         R
         rPackages.tidyverse
-        rPackages.zoo
-        rPackages.reshape2
       ];
 
       rmdInputs = with pkgs; [
@@ -19,9 +24,16 @@
         rPackages.knitr
         texlive.combined.scheme-full
       ];
-    in {
+    in
+    {
 
-      devShell.x86_64-linux =
-        pkgs.mkShell { buildInputs = rBaseInputs ++ rmdInputs; };
+      devShells.${system} = rec {
+        default = rshell;
+        rshell =
+          pkgs.mkShell { buildInputs = rBaseInputs; };
+
+        rmdshell =
+          pkgs.mkShell { buildInputs = rBaseInputs ++ rmdInputs; };
+      };
     };
 }
