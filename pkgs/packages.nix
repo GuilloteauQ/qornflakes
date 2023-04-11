@@ -15,7 +15,7 @@ darshan // rec {
   globus-cli = pkgs.callPackage ./globus-cli {
     inherit globus-sdk;
   };
-  globus-sdk = import ./globus-sdk/default.nix { inherit pkgs; };
+  globus-sdk = pkgs.callPackage ./globus-sdk { };
   globus-connect-personal =
     import ./globus-connect-personnal/default.nix {
       inherit pkgs;
