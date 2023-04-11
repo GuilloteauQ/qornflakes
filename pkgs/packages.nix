@@ -9,7 +9,7 @@ darshan // rec {
   snakefmt = pkgs.callPackage ./snakefmt { };
   python-control = pkgs.callPackage ./python-control { };
   ondes3d = pkgs.callPackage ./ondes3d { };
-  recorder = import ./recorder/default.nix { inherit pkgs; };
+  recorder = pkgs.callPackage ./recorder { };
   recorder-viz =
     import ./recorder-viz/default.nix { inherit pkgs; };
   globus-cli = import ./globus-cli/default.nix {
