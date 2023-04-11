@@ -19,7 +19,6 @@ darshan // rec {
   globus-connect-personal =
     pkgs.callPackage ./globus-connect-personnal { };
   vanidl = pkgs.callPackage ./vanidl { };
-  enoslib = import ./enoslib/default.nix { inherit pkgs; };
   uga_thesis_rmd =
     import ./uga_thesis_rmd/default.nix { inherit pkgs; };
   qprez = import ./qprez/default.nix { inherit pkgs; };
