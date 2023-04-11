@@ -23,7 +23,7 @@ darshan // rec {
     pkgs.callPackage ./uga_thesis_rmd { };
   qprez = pkgs.callPackage ./qprez { };
   facetscales = pkgs.callPackage ./facetscales { };
-  ggpattern = import ./ggpattern/default.nix { inherit pkgs; };
+  ggpattern = pkgs.callPackage ./ggpattern { };
   httpimport = import ./httpimport/default.nix { inherit pkgs; };
   jless = import ./jless/default.nix { inherit pkgs; };
   hackernewsTUI = import ./hackernews-TUI/default.nix { inherit pkgs; };
