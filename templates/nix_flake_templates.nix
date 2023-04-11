@@ -1,4 +1,8 @@
 {
+  default = {
+    path = ./shell;
+    description = "basic shell";
+  };
   R = {
     path = ./R;
     description = "R and friends";
