@@ -17,9 +17,7 @@ darshan // rec {
   };
   globus-sdk = pkgs.callPackage ./globus-sdk { };
   globus-connect-personal =
-    import ./globus-connect-personnal/default.nix {
-      inherit pkgs;
-    };
+    pkgs.callPackage ./globus-connect-personnal { };
   vanidl = import ./vanidl/default.nix { inherit pkgs; };
   python-mip = import ./python-mip/default.nix { inherit pkgs; };
   execo = import ./execo/default.nix { inherit pkgs; };

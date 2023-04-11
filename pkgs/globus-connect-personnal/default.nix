@@ -1,7 +1,6 @@
-{ pkgs }:
-with pkgs;
-pkgs.tcl.mkTclDerivation {
-  # stdenv.mkDerivation {
+{ tcl, autoPatchelfHook, audit, glibc, gcc-unwrapped, tk, tcllib, tclx }:
+
+tcl.mkTclDerivation {
   name = "globus-connect-personal";
   src = fetchTarball {
     url =
