@@ -26,7 +26,7 @@ darshan // rec {
   ggpattern = pkgs.callPackage ./ggpattern { };
   httpimport = pkgs.callPackage ./httpimport { };
   jless = pkgs.callPackage ./jless { };
-  hackernewsTUI = import ./hackernews-TUI/default.nix { inherit pkgs; };
+  hackernewsTUI = pkgs.callPackage ./hackernews-TUI { };
   pyhst2 = import ./pyhst/default.nix { inherit pkgs; };
   geomtextpath =
     import ./geomtextpath/default.nix { inherit pkgs; };
