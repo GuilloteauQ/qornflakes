@@ -21,7 +21,7 @@ darshan // rec {
   vanidl = pkgs.callPackage ./vanidl { };
   uga_thesis_rmd =
     pkgs.callPackage ./uga_thesis_rmd { };
-  qprez = import ./qprez/default.nix { inherit pkgs; };
+  qprez = pkgs.callPackage ./qprez { };
   facetscales = import ./facetscales/default.nix { inherit pkgs; };
   ggpattern = import ./ggpattern/default.nix { inherit pkgs; };
   httpimport = import ./httpimport/default.nix { inherit pkgs; };
