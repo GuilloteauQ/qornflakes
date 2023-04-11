@@ -11,7 +11,7 @@ darshan // rec {
   ondes3d = pkgs.callPackage ./ondes3d { };
   recorder = pkgs.callPackage ./recorder { };
   recorder-viz =
-    import ./recorder-viz/default.nix { inherit pkgs; };
+    pkgs.callPackage ./recorder-viz { };
   globus-cli = import ./globus-cli/default.nix {
     inherit pkgs;
     qorn_globus_sdk = globus-sdk;

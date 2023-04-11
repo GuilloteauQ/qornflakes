@@ -1,6 +1,6 @@
-{ pkgs }:
-with pkgs;
-python38Packages.buildPythonPackage rec {
+{ python3Packages, fetchFromGitHub }:
+
+python3Packages.buildPythonPackage rec {
   name = "recorder-viz";
   version = "0.1";
   src = fetchFromGitHub {
@@ -9,7 +9,7 @@ python38Packages.buildPythonPackage rec {
     rev = "9160cf658d9e1f4c64d34c33e7e257a65a2d7c1d";
     sha256 = "sha256-alnUyup+mQGd7922zC+y6BtEv8mqyiSDQJqnA2Kox04";
   };
-  propagatedBuildInputs = with python38Packages; [
+  propagatedBuildInputs = with python3Packages; [
     pandas
     bokeh
     prettytable
