@@ -24,8 +24,8 @@ darshan // rec {
   qprez = pkgs.callPackage ./qprez { };
   facetscales = pkgs.callPackage ./facetscales { };
   ggpattern = pkgs.callPackage ./ggpattern { };
-  httpimport = import ./httpimport/default.nix { inherit pkgs; };
-  jless = import ./jless/default.nix { inherit pkgs; };
+  httpimport = pkgs.callPackage ./httpimport { };
+  jless = pkgs.callPackage ./jless { };
   hackernewsTUI = import ./hackernews-TUI/default.nix { inherit pkgs; };
   pyhst2 = import ./pyhst/default.nix { inherit pkgs; };
   geomtextpath =
