@@ -27,9 +27,10 @@ darshan // rec {
   httpimport = pkgs.callPackage ./httpimport { };
   jless = pkgs.callPackage ./jless { };
   hackernewsTUI = pkgs.callPackage ./hackernews-TUI { };
-  pyhst2 = import ./pyhst/default.nix { inherit pkgs; };
+  freetype2 = pkgs.callPackage ./freetype2 { };
+  myTextshaping = pkgs.callPackage ./mytextshaping { inherit freetype2; }; 
   geomtextpath =
-    import ./geomtextpath/default.nix { inherit pkgs; };
+    pkgs.callPackage ./geomtextpath { inherit myTextshaping;};
 } // import ./MADbench2/default.nix {
   inherit pkgs; darshan-runtime = darshan.darshan-runtime;
 }
