@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, rPackages, myTextshaping }:
+{ stdenv, fetchFromGitHub, rPackages, myTextshaping, R }:
 
 
 rPackages.buildRPackage rec {

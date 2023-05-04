@@ -1,4 +1,4 @@
-{ fetchFromGitHub, rPackages, freetype2 }:
+{ fetchFromGitHub, rPackages, freetype2, R, harfbuzz, fribidi, pkg-config }:
 
 rPackages.buildRPackage rec {
   name = "textshaping";
