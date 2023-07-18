@@ -18,13 +18,11 @@ rec {
   httpimport = pkgs.callPackage ./httpimport { };
 
   ior-simgrid = pkgs.ior.overrideAttrs (finalAttrs: previousAttrs: {
-    buildInputs = previousAttrs.buildInputs ++ [ pkgs.simgrid ];
-    preConfigure = ''
-      export SMPI_PRETEND_CC=1
+    pname = "ior-simgrid";
+    propagatedBuildInputs = [ pkgs.simgrid ];
+    configurePhase = ''
+      ./bootstrap && SMPI_PRETEND_CC=1 ./configure --prefix=$out MPICC=${pkgs.simgrid}/bin/smpicc CC=${pkgs.simgrid}/bin/smpicc
     '';
-    configureFlags = [
-      "MPICC=${pkgs.simgrid}/bin/smpicc"
-    ];
   });
 
   jless = pkgs.callPackage ./jless { };
