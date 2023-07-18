@@ -17,6 +17,16 @@ rec {
   hackernewsTUI = pkgs.callPackage ./hackernews-TUI { };
   httpimport = pkgs.callPackage ./httpimport { };
 
+  ior-simgrid = pkgs.ior.overrideAttrs (finalAttrs: previousAttrs: {
+    buildInputs = previousAttrs.buildInputs ++ [ pkgs.simgrid ];
+    preConfigure = ''
+      export SMPI_PRETEND_CC=1
+    '';
+    configureFlags = [
+      "MPICC=${pkgs.simgrid}/bin/smpicc"
+    ];
+  });
+
   jless = pkgs.callPackage ./jless { };
 
   madbench2 = pkgs.callPackage ./MADbench2 { mpi = pkgs.openmpi; inherit darshan-runtime; };
