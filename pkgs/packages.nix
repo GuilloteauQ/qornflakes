@@ -33,6 +33,8 @@ rec {
 
   ondes3d = pkgs.callPackage ./ondes3d { };
 
+  pajeng = pkgs.callPackage ./pajeng { };
+  pajengr = pkgs.callPackage ./pajengr { inherit pajeng; };
   pydarshan = pkgs.callPackage ./pydarshan { inherit darshan-util; };
   python-control = pkgs.callPackage ./python-control { };
 
