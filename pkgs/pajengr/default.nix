@@ -13,7 +13,10 @@ rPackages.buildRPackage {
     R
     R_utils
     devtools
-    Rcpp
     gnumake
   ] ++ pajeng.buildInputs ;
+
+  propagatedBuildInputs = [
+    rPackages.Rcpp
+  ];
 }
