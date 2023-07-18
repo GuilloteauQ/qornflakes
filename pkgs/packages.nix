@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, kapack }:
 
 rec {
   darshan-perl = pkgs.callPackage ./darshan-perl { };
@@ -45,6 +45,8 @@ rec {
 
   snakefmt = pkgs.callPackage ./snakefmt { };
   starpu = pkgs.callPackage ./starpu { };
+
+  topo5k = pkgs.callPackage ./topo5k { execo = kapack.execo; };
 
   uga_thesis_rmd = pkgs.callPackage ./uga_thesis_rmd { };
 
