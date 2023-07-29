@@ -41,12 +41,27 @@ stdenv.mkDerivation {
     cmake -G Ninja ../llvm \
        -DLLVM_ENABLE_PROJECTS=mlir \
        -DLLVM_BUILD_EXAMPLES=ON \
-       -DLLVM_TARGETS_TO_BUILD="Native;NVPTX;AMDGPU" \
+       -DLLVM_TARGETS_TO_BUILD="Native" \
        -DCMAKE_BUILD_TYPE=Release \
        -DLLVM_ENABLE_ASSERTIONS=ON \
        -DCMAKE_C_COMPILER=${clang}/bin/clang\
        -DCMAKE_CXX_COMPILER=${clang}/bin/clang++\
-       -DLLVM_ENABLE_LLD=ON
+       -DLLVM_ENABLE_LLD=ON\
+       -DCMAKE_INSTALL_PREFIX=$out
 
+    # cmake --build . --target check-mlir
   '';
+
+  buildPhase = ''
+    echo "NIX BuildPhase"
+    ls
+    cmake --build . --target check-mlir
+    cmake --build . --target install/strip
+    ls
+  '';
+  installPhase = ''
+    echo "NIX installPhase"
+    ls $out
+  '';
+
 }
