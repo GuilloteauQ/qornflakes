@@ -1,6 +1,8 @@
 { pkgs, kapack }:
 
 rec {
+  antlr-cpp = pkgs.callPackage ./antlr-cpp { };
+
   darshan-perl = pkgs.callPackage ./darshan-perl { };
   darshan-runtime = pkgs.callPackage ./darshan-runtime { inherit darshan-perl; };
   darshan-util = pkgs.callPackage ./darshan-util { inherit darshan-perl; };
