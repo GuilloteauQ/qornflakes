@@ -35,6 +35,8 @@ rec {
   myTextshaping = pkgs.callPackage ./mytextshaping { inherit freetype2; };
   mlir = pkgs.callPackage ./mlir { };
 
+  lb4omp = pkgs.callPackage ./lb4omp { };
+
   ondes3d = pkgs.callPackage ./ondes3d { };
 
   pajeng = pkgs.callPackage ./pajeng { };
