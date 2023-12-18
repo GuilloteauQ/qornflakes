@@ -38,6 +38,7 @@ rec {
   lb4omp = pkgs.callPackage ./lb4omp { };
 
   ondes3d = pkgs.callPackage ./ondes3d { };
+  otf2 = pkgs.callPackage ./otf2 { };
 
   pajeng = pkgs.callPackage ./pajeng { };
   pajengr = pkgs.callPackage ./pajengr { inherit pajeng; };
