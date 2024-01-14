@@ -34,11 +34,13 @@ rec {
   madbench2-darshan = pkgs.callPackage ./MADbench2 { mpi = pkgs.mpich; useDarshan = true; inherit darshan-runtime; };
   myTextshaping = pkgs.callPackage ./mytextshaping { inherit freetype2; };
   mlir = pkgs.callPackage ./mlir { };
+  marimo = pkgs.callPackage ./marimo { };
 
   lb4omp = pkgs.callPackage ./lb4omp { };
 
   ondes3d = pkgs.callPackage ./ondes3d { };
   otf2 = pkgs.callPackage ./otf2 { };
+  libotf2 = pkgs.callPackage ./otf2lib { };
 
   pajeng = pkgs.callPackage ./pajeng { };
   pajengr = pkgs.callPackage ./pajengr { inherit pajeng; };
