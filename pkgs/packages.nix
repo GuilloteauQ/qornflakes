@@ -3,10 +3,12 @@
 rec {
   antlr-cpp = pkgs.callPackage ./antlr-cpp { };
 
+  concerto = pkgs.callPackage ./concerto { };
+
   darshan-perl = pkgs.callPackage ./darshan-perl { };
   darshan-runtime = pkgs.callPackage ./darshan-runtime { inherit darshan-perl; };
   darshan-util = pkgs.callPackage ./darshan-util { inherit darshan-perl; };
-  daphne = pkgs.callPackage ./daphne { };
+  daphne = pkgs.callPackage ./daphne { inherit antlr-cpp; };
 
   facetscales = pkgs.callPackage ./facetscales { };
   freetype2 = pkgs.callPackage ./freetype2 { };
