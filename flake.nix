@@ -4,7 +4,7 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    nixpkgs.url = "github:nixos/nixpkgs/23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/25.05";
     nur-kapack.url = "github:oar-team/nur-kapack";
     nur-kapack.inputs."nixpkgs".follows = "nixpkgs";
   };
