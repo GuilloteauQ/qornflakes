@@ -61,6 +61,7 @@ rec {
   topo5k = pkgs.callPackage ./topo5k { execo = kapack.execo; };
 
   uga_thesis_rmd = pkgs.callPackage ./uga_thesis_rmd { };
+  umka = pkgs.callPackage ./umka { };
 
   vanidl = pkgs.callPackage ./vanidl { };
 }
