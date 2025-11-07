@@ -54,6 +54,7 @@ rec {
   recorder = pkgs.callPackage ./recorder { };
   recorder-viz = pkgs.callPackage ./recorder-viz { };
 
+  scicommander = pkgs.callPackage ./scicommander { };
   snakefmt = pkgs.callPackage ./snakefmt { };
   starpu = pkgs.callPackage ./starpu { };
   smpi_replay = pkgs.callPackage ./smpi_replay { };
