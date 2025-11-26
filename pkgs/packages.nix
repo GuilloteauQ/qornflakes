@@ -4,6 +4,7 @@ rec {
   # antlr-cpp = pkgs.callPackage ./antlr-cpp { };
 
   concerto = pkgs.callPackage ./concerto { };
+  chuffed = pkgs.callPackage ./chuffed { };
 
   darshan-perl = pkgs.callPackage ./darshan-perl { };
   darshan-runtime = pkgs.callPackage ./darshan-runtime { inherit darshan-perl; };
