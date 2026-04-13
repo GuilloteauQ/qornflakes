@@ -3,6 +3,8 @@
 python3Packages.buildPythonPackage rec {
   name = "vanidl";
   version = "0.0.1";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
   src = fetchFromGitHub {
     owner = "hariharan-devarajan";
     repo = "vanidl";

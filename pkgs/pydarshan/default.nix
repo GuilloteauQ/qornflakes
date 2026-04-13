@@ -12,6 +12,8 @@ python3Packages.buildPythonPackage rec {
   name = "pydarshan";
   version = "0.1";
   src = "${rootSrc}/darshan-util/pydarshan";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
   propagatedBuildInputs = with python3Packages; [
     cffi
     numpy

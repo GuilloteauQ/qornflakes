@@ -3,6 +3,8 @@
 python3Packages.buildPythonPackage rec {
   name = "httpimport";
   version = "0.7.2";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
   src = fetchFromGitHub {
     owner = "operatorequals";
     repo = "httpimport";

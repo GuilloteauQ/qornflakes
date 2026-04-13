@@ -4,6 +4,8 @@ python3Packages.buildPythonPackage rec {
   pname = "python-control";
   version = "0.9.2";
 
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
   src = fetchFromGitHub {
     owner = "python-control";
     repo = pname;

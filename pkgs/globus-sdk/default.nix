@@ -3,6 +3,8 @@
 python3Packages.buildPythonPackage rec {
   name = "globus-sdk";
   version = "3.1.0";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
   src = fetchFromGitHub {
     owner = "globus";
     repo = "globus-sdk-python";

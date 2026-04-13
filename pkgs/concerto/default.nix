@@ -2,6 +2,8 @@
 python3Packages.buildPythonPackage rec {
   name = "concerto";
   version = "0.1";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
   src = fetchFromGitLab {
     domain = "gitlab.inria.fr";
     owner = "VeRDi-project";

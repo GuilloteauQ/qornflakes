@@ -4,7 +4,7 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    nixpkgs.url = "github:nixos/nixpkgs/25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/25.11";
     nur-kapack.url = "github:oar-team/nur-kapack";
     nur-kapack.inputs."nixpkgs".follows = "nixpkgs";
   };
@@ -19,18 +19,8 @@
       in rec {
         packages = (import ./pkgs/packages.nix { inherit pkgs kapack; });
         checks = {
-          #pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          #  src = ./.;
-          #  hooks = {
-          #    nixfmt = { enable = true; };
-          #    nix-linter = { enable = true; };
-          #  };
-          #};
         };
         devShells = {
-          #check = nixpkgs.legacyPackages.${system}.mkShell {
-          #  inherit (self.checks.${system}.pre-commit-check) shellHook;
-          #};
         } // shellSet;
       }) // {
         inherit templates;

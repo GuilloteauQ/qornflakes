@@ -3,12 +3,12 @@
 stdenv.mkDerivation {
   name = "smpi_replay";
   version = simgrid.version;
-  src = "${simgrid.src}/examples/smpi/replay";
-  propagatedBuildInputs = [
+  src = simgrid.src;#}/examples/smpi/replay";
+  buildInputs = [
     simgrid
   ];
   buildPhase = ''
-    smpicxx replay.cpp -O3 -o smpi_replay
+    ${simgrid}/bin/smpicxx examples/smpi/replay/replay.cpp -O3 -o smpi_replay
   '';
   installPhase = ''
     mkdir -p $out/bin

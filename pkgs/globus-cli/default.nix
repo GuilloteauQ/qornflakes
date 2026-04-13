@@ -3,6 +3,8 @@
 python3Packages.buildPythonPackage rec {
   name = "globus-cli";
   version = "0.1";
+  pyproject = true;
+  build-system = [ python3Packages.setuptools ];
   src = fetchFromGitHub {
     owner = "globus";
     repo = "globus-cli";

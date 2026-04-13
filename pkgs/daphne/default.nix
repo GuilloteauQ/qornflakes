@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, cmake, ninja, pkg-config, python3Packages }:
+{ stdenv, fetchFromGitHub, cmake, ninja, pkg-config, python3Packages, antlr-cpp }:
 
 stdenv.mkDerivation {
   pname = "daphne";
@@ -14,6 +14,7 @@ stdenv.mkDerivation {
     cmake
     ninja
     pkg-config
+    antlr-cpp
   ];
 
   propagatedBuildInputs = with python3Packages; [
